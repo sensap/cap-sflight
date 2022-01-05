@@ -1,5 +1,8 @@
 {
-	"sql": {
-		"dialect": "plain"
-	}
+  "sql": {
+    "dialect": "plain"
+  },
+  "hana": {
+    "deploy-format": "hdbtable"
+  }
 }

@@ -18,6 +18,7 @@
   "dependencies": {
     "@sap/audit-logging": "^5.0.0",
     "@sap/cds": "^5.4.5",
+    "@sap/hana-client": "^2.11.14",
     "@sap/xssec": "^3.2.7",
     "express": "^4",
     "hdb": "^0.18.3",
@@ -35,7 +36,8 @@
   "cds": {
     "requires": {
       "db": {
-        "kind": "sql"
+        "[development]": { "kind": "sqlite" },
+        "[production]": { "kind": "hana" }
       },
       "uaa": {
         "kind": "xsuaa"
@@ -46,6 +48,7 @@
         }
       }
     },
+    
     "hana": {
       "deploy-format": "hdbtable"
     },
@@ -53,12 +56,20 @@
       "service": true
     },
     "features": {
-      "preserve_computed": true
+      "preserve_computed": true,
+      "fiori_preview": true
     },
     "build": {
       "[node]": {
         "target": "gen",
-        "tasks": [{"for": "node-cf"}, {"for": "hana"}]
+        "tasks": [
+          {
+            "for": "node-cf"
+          },
+          {
+            "for": "hana"
+          }
+        ]
       }
     }
   },
@@ -69,4 +80,5 @@
   "sapux": [
     "app/travel_processor"
   ]
+   
 }

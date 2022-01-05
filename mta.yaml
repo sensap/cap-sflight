@@ -18,7 +18,7 @@ modules:
   - name: sflight-srv
   # ------------------------------------------------------------
     type: nodejs
-    path: gen/srv
+    path: srv
     requires:
       - name: sflight-db
       - name: sflight-uaa
@@ -33,7 +33,7 @@ modules:
   - name: sflight-db-deployer
   # ------------------------------------------------------------
     type: hdb
-    path: gen/db
+    path: db
     parameters:
       buildpack: nodejs_buildpack
     requires:
